@@ -1,5 +1,4 @@
-import { getAllTransactions } from '../services/transactions.service.js';
-import { createTransaction } from '../services/transactions.service.js';  
+import { getAllTransactions, createTransaction, updateTransaction, deleteTransaction } from '../services/transactions.service.js';
 
 
 export const getTransactions = async (req, res) => {
@@ -29,4 +28,38 @@ export const addTransaction = async (req, res) => {
         res.status(500).json({ message: 'Error al crear la transacción', error });
     }
 };
+
+// Modificar transaccion 
+export async function updateTransactionController(req, res) {
+  try {
+    const { id } = req.params;
+    const { description, category, amount, type, date } = req.body;
+
+    const result = await updateTransaction(id, { description, category, amount, type, date });
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: 'Transacción no encontrada' });
+    }
+
+    res.status(200).json({ message: 'Transacción actualizada correctamente' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error al actualizar transacción', error });
+  }
+}
+
+// Eliminar transaccion
+export async function deleteTransactionController(req, res) {
+  try {
+    const { id } = req.params;
+    const result = await deleteTransaction(id);
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: 'Transacción no encontrada' });
+    }
+
+    res.status(200).json({ message: 'Transacción eliminada correctamente' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error al eliminar transacción', error });
+  }
+}
 
