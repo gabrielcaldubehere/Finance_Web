@@ -1,9 +1,9 @@
-import { getAllTransactions, createTransaction, updateTransaction, deleteTransaction } from '../services/transactions.service.js';
+import * as control from '../services/service.js';
 
 
-export const getTransactions = async (req, res) => {
+export const get_db = async (_req, res) => {
   try {
-    const data = await getAllTransactions();
+    const data = await control.getDB();
     res.json(data);
   } catch (error) {
     console.error('Error fetching transactions:', error);
@@ -11,7 +11,7 @@ export const getTransactions = async (req, res) => {
   }
 };
 
-export const addTransaction = async (req, res) => {
+export const add_db = async (req, res) => {
     try {
         const { description, category, amount, type, date } = req.body;
         
@@ -21,7 +21,7 @@ export const addTransaction = async (req, res) => {
         }
 
           // Crear la transaccion
-        const newTransaction = await createTransaction({ description, category, amount, type, date });
+        const newTransaction = await control.createDB({ description, category, amount, type, date });
         res.status(201).json({ message: 'Transacción creada', transaction: newTransaction });
     } catch (error) {
         console.error('Error creating transaction:', error);
@@ -30,12 +30,12 @@ export const addTransaction = async (req, res) => {
 };
 
 // Modificar transaccion 
-export async function updateTransactionController(req, res) {
+export async function update_db(req, res) {
   try {
     const { id } = req.params;
     const { description, category, amount, type, date } = req.body;
 
-    const result = await updateTransaction(id, { description, category, amount, type, date });
+    const result = await control.updateDB (id, { description, category, amount, type, date });
 
     if (result.affectedRows === 0) {
       return res.status(404).json({ message: 'Transacción no encontrada' });
@@ -48,10 +48,10 @@ export async function updateTransactionController(req, res) {
 }
 
 // Eliminar transaccion
-export async function deleteTransactionController(req, res) {
+export async function delete_db (req, res) {
   try {
     const { id } = req.params;
-    const result = await deleteTransaction(id);
+    const result = await control.deleteDB (id);
 
     if (result.affectedRows === 0) {
       return res.status(404).json({ message: 'Transacción no encontrada' });

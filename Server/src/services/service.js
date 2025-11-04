@@ -1,13 +1,13 @@
 import db from '../config/db.js';
 
-export async function getAllTransactions() {
+export async function getDB() {
     const [rows] = await db.query('SELECT id, description, category, amount, type, date FROM transactions');
     return rows;
 
 }
 
 
-export async function createTransaction({ description, category, amount, type, date }) {
+export async function createDB({ description, category, amount, type, date }) {
     const sql = 'INSERT INTO transactions (description, category, amount, type, date) VALUES (?, ?, ?, ?, ?)';
     const params = [description, category, amount, type, date];
     const [result] = await db.query(sql, params);
@@ -16,7 +16,7 @@ export async function createTransaction({ description, category, amount, type, d
     
 }
 
-export async function updateTransaction(id, { description, category, amount, type, date }) {
+export async function updateDB(id, { description, category, amount, type, date }) {
   const sql = `
     UPDATE transactions
     SET description = ?, category = ?, amount = ?, type = ?, date = ?
@@ -29,7 +29,7 @@ export async function updateTransaction(id, { description, category, amount, typ
   return { affectedRows: result.affectedRows };
 }
 
-export async function deleteTransaction(id) {
+export async function deleteDB (id) {
   const sql = 'DELETE FROM transactions WHERE id = ?';
   const [result] = await db.query(sql, [id]);
   return { affectedRows: result.affectedRows };
