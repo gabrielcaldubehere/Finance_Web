@@ -21,15 +21,23 @@ export const add_db = async (req, res) => {
         }
 
           // Crear la transaccion
-        const newTransaction = await control.createDB({ description, category, amount, type, date });
-        res.status(201).json({ message: 'Transacción creada', transaction: newTransaction });
+      const newTransaction = await control.createDB({ description, category, amount, type, date });
+res.status(201).json({
+  id: newTransaction.id,
+  description,
+  category,
+  amount,
+  type,
+  date,
+});
+
     } catch (error) {
         console.error('Error creating transaction:', error);
-        res.status(500).json({ message: 'Error al crear la transacción', error });
+        res.status(500).json({ message: 'Error al crear transacción', error });
     }
 };
 
-// Modificar transaccion 
+// Modificar transaccion
 export async function update_db(req, res) {
   try {
     const { id } = req.params;
@@ -41,7 +49,15 @@ export async function update_db(req, res) {
       return res.status(404).json({ message: 'Transacción no encontrada' });
     }
 
-    res.status(200).json({ message: 'Transacción actualizada correctamente' });
+  res.status(200).json({
+  id,
+  description,
+  category,
+  amount,
+  type,
+  date,
+});
+
   } catch (error) {
     res.status(500).json({ message: 'Error al actualizar transacción', error });
   }
