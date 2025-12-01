@@ -3,7 +3,7 @@ import type { Finance } from "../types";
 
 // Configuramos Axios con la URL base del backends
 export const api = axios.create({
-  baseURL: "http://localhost:4000/api/transactions", // Cambia si usás otro puerto
+  baseURL: "https://finance-server-gd18.onrender.com/api/transactions", // Cambia si usás otro puerto
   headers: { "Content-Type": "application/json" },
 });
 
