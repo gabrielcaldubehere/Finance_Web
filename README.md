@@ -1,4 +1,3 @@
-Finance Web
 Finance Web es una aplicación full stack para la gestión financiera personal. Incluye un backend (server) en Node.js + Express + MySQL y un frontend (client) en React + TypeScript, desplegados en la nube para demostrar un flujo completo de arquitectura moderna.
 
 🚀 Tecnologías
