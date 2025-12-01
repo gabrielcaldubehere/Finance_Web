@@ -1,30 +1,61 @@
-# 💰 Finance Web API
+Finance Web
+Finance Web es una aplicación full stack para la gestión financiera personal. Incluye un backend (server) en Node.js + Express + MySQL y un frontend (client) en React + TypeScript, desplegados en la nube para demostrar un flujo completo de arquitectura moderna.
 
-Finance Web es una API REST desarrollada en **Node.js + Express + MySQL** que gestiona ingresos y egresos financieros.  
-Este proyecto forma parte de mi portafolio personal y se complementa con el frontend **Finance Web** (cliente React + TypeScript).
+🚀 Tecnologías
 
-## 🚀 Tecnologías
+Server (Backend)
 - Node.js
 - Express
-- MySQL
+- MySQL (Hostinger)
 - Dotenv
 - CORS
 - Nodemon
 
-## 📁 Estructura del proyecto
-src/
-├── config/ # Configuración (DB, dotenv)
-├── controllers/ # Lógica de control
-├── routes/ # Rutas del API
-├── services/ # Lógica de negocio
-├── middleware/ # Middlewares personalizados
-└── utils/ # Funciones auxiliares
 
-shell
-Copiar código
+Client (Frontend)
+- React + Vite
+- TypeScript
+- TailwindCSS
+- Axios
 
-## 🧠 Objetivo
-Aprender y aplicar conceptos de backend profesional, arquitectura en capas y conexión con base de datos relacional.
 
-## 🧑‍💻 Autor
-Gabriel Caldubehere
+Deploy
+- Backend: Render
+- Frontend: Hostinger
+
+📁 Estructura del proyecto
+Código
+finance-web/
+├── server/
+│   └── src/
+│       ├── config/       # Configuración (DB, dotenv)
+│       ├── controllers/  # Lógica de control
+│       ├── routes/       # Rutas del API
+│       ├── services/     # Lógica de negocio
+│       ├── middleware/   # Middlewares personalizados
+│       └── utils/        # Funciones auxiliares
+│
+├── client/
+│   └── src/
+│       ├── components/   # UI
+│       │   ├── FinanceForm.tsx   # Formulario de transacciones
+│       │   └── FinanceTable.tsx  # Tabla de ingresos/egresos
+│       ├── services/     # Conexión API
+│       │   └── api.ts
+│       └── types.ts      # Tipado de datos financieros
+
+
+🧠 Objetivo
+
+Implementar un CRUD completo de ingresos y egresos.
+
+Aplicar arquitectura en capas y tipado fuerte con TypeScript.
+
+Conectar frontend y backend en la nube, mostrando datos en tiempo real.
+
+Practicar despliegue profesional con Render y Hostinger.
+
+
+
+Autor
+** Gabriel Caldubehere **
