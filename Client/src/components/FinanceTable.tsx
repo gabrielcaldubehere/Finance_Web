@@ -32,12 +32,18 @@ const FinanceTable: React.FC<Props> = ({ finances, onEdit, onDelete }) => {
                 <td className="p-2">${item.amount}</td>
                 <td
                   className={`p-2 font-semibold ${
-                    item.type === "ingreso" ? "text-green-600" : "text-red-600"
+                    item.type === "income" ? "text-green-600" : "text-red-600"
                   }`}
                 >
-                  {item.type}
+                 {item.type === "income" ? "Ingreso" : "Egreso"}
                 </td>
-                <td className="p-2">{item.date}</td>
+                <td className="p-2">
+                 {new Date(item.date).toLocaleDateString("es-AR", {
+                   day: "2-digit",
+                   month: "2-digit",
+                    year: "numeric",
+                })}
+                </td>
                 <td className="p-2 flex gap-2 justify-center">
                   <button
                     onClick={() => onEdit(item)}

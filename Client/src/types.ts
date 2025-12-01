@@ -4,6 +4,6 @@ export interface Finance {
   description: string;
   category: string;
   amount: number;
-  type: "ingreso" | "egreso";
+  type: "ingreso" | "egreso" | "income"| "expense";
   date: string; // Formato ISO (YYYY-MM-DD)
 }
